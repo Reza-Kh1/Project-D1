@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    box-sizing: border-box;
+    font-family: var(--sahel-font), Arial, Helvetica, sans-serif !important;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.custom-scroll::-webkit-scrollbar {
+    width: 6px;
+    /* عرض اسکرول‌بار */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* پس‌زمینه اسکرول‌بار */
+    border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    /* رنگ دستگیره اسکرول‌بار */
+    border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* رنگ دستگیره در حالت هاور */
+}
+
+.scroll-none {
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scroll-none::-webkit-scrollbar {
+    display: none;
+}
+
+.cutline {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.cutline-1 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1
+}
+
+.cutline-2 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2
+}
+
+.cutline-3 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3
+}
+
+.cutline-4 {
+    -webkit-line-clamp: 4;
+    line-clamp: 4
+}
+
+.classDiv {
+    max-width: 80rem;
+    margin: 6px auto;
+    width: 100%;
+}
+
+.bg-grid {
+    color: aliceblue;
+    background: linear-gradient(52deg, rgb(134 177 233), rgb(7 60 99));
+    box-shadow: rgb(171 171 171) 0px 0px 5px 0px;
+    border-radius: 6px;
+}
+
+.active-link {
+    box-shadow: 0px 0px 6px 1px #405564;
+    background: linear-gradient(52deg, rgb(131 132 134), rgb(16 49 74));
+}
+
+.bg-custom .transition-background,
+.bg-custom button {
+    background: #dfe5ea;
+}
+
+.border-message-right {
+    border-radius: 10px 10px 0 10px;
+}
+
+.border-message-left {
+    border-radius: 10px 10px 10px 0;
+}
+
+/* کلاس تقویم */
+.rmdp-input {
+    box-shadow: 0px 1px 5px 0px #c6c6c6 !important;
+    padding: 19px !important;
+    background: #dfe5ea !important;
+    width: 100% !important;
+    border: none !important;
+}

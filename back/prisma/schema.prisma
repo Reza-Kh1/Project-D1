@@ -1,0 +1,359 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// npx prisma db push آپدیت مدل ها
+/////////////////////////////       Model User         /////////////////////////////
+model Expert {
+  id          String       @id @default(uuid()) @db.Uuid
+  isVerify    Boolean      @default(false) // احراز هویت
+  isDelete    Boolean      @default(false) // حذف شدن
+  isStatus    Boolean      @default(false) // وضعیت تکمیل اطلاعات
+  name        String? // نام و نام خانوادگی
+  age         String? // سن
+  phone       String?      @unique // شماره تلفن
+  province    String? // استان
+  city        String? // شهرستان
+  gender      RoleGender? // جنسیت
+  jobStatus   Boolean? // مشغول به کار هستش
+  jobLocation String? // موقعیت شغل
+  jobTitle    String? // سمت شغل
+  jobTime     String? // مدت زمان شغل
+  image       String? // عکس
+  password    String // پسورد
+  verifyPass  String? // پسورد ارسال شده با پیامک
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  expertises  Expertise[]
+  education   Education[]
+  software    Software[]
+  Chat        Chat[]
+  JobContact  JobContact[]
+  Payment     Payment[]
+  DetailScore DetailScore?
+  Score       Score[]
+
+  @@index([phone])
+  @@index([isDelete])
+  @@index([isVerify])
+}
+
+enum RoleGender {
+  MAN
+  WOMAN
+  All
+}
+
+/////////////////////////////       Model Expertise         /////////////////////////////
+model Expertise {
+  id     Int     @id @default(autoincrement())
+  name   String // نام تخصص
+  lvl    String // سطح تسلط به تخصص
+  file   String? // ادرس دانلود رزومه
+  desc   String? // توضیحات
+  userId String  @db.Uuid // شناسه کاربر
+  user   Expert  @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+/////////////////////////////       Model Education         /////////////////////////////
+model Education {
+  id         Int    @id @default(autoincrement())
+  major      String // رشته تحصیلی
+  education  String // مقطح تحصیلی
+  university String // دانشگاه
+  userId     String @db.Uuid // شناسه کاربر
+  user       Expert @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+/////////////////////////////       Model SOftware         /////////////////////////////
+model Software {
+  id           Int         @id @default(autoincrement())
+  name         String // نام نرم افزار
+  lvl          String // سطح تسلط به نرم افزار
+  tag          String
+  userId       String?     @db.Uuid // شناسه کاربر
+  user         Expert?     @relation(fields: [userId], references: [id])
+  employmentId Int? // شناسه درخواست استخدام
+  employment   Employment? @relation(fields: [employmentId], references: [id])
+
+  @@index([userId])
+  @@index([employmentId])
+}
+
+/////////////////////////////       Model Company         /////////////////////////////
+model Company {
+  id            String       @id @default(uuid()) @db.Uuid
+  isDelete      Boolean      @default(false) // حذف شدن
+  isStatus      Boolean      @default(false) // وضعیت تکمیل اطلاعات
+  isVerify      Boolean      @default(false)
+  name          String? // اسم شرکت
+  password      String // پسورد برای ورود
+  companyId     String       @unique // شناسه شرکت
+  phone         String?      @unique // تلفن شرکت
+  userCompany   String? // نام رابط
+  phoneUser     String // شماره رابط
+  userRole      String? // سمت رابط
+  companyField  String? // حوزه فعالیت
+  employeeCount String? // تعداد کارمندها
+  address       String? // آدرس
+  lvl           String? // سطح شرکت
+  year          String? // سال تاسیس
+  verifyPass    String? // پسورد ارسال شده با پیامک
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  employment    Employment[]
+  Chat          Chat[]
+  Payment       Payment[]
+  DetailScore   DetailScore?
+  JobContact    JobContact[]
+  Score         Score[]
+
+  @@index([isDelete])
+  @@index([isVerify])
+  @@index([companyId])
+}
+
+/////////////////////////////       Model Employment         /////////////////////////////
+model Employment {
+  id            Int       @id @default(autoincrement())
+  isDelete      Boolean   @default(false)
+  isDone        Boolean   @default(false)
+  nameExpertise String // نام تخصص
+  lvl           String // سطح متخصص
+  teamWork      Boolean // کار به صورت فردی است یا گروهی
+  gender        String? // جنسیت
+  price         String // نحوه پرداخت
+  age           String // سن متخصص
+  startProject  DateTime?
+  takeTask      Boolean // کار را از کسی شخصی تحویل میگیرد ؟
+  remote        Boolean // کار به صورت حضوری یا دورکاری
+  descRemote    Json? // توضیحات دورکاری
+  desc          String? // توضیحات کلی
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  companyId     String    @db.Uuid
+  company       Company   @relation(fields: [companyId], references: [id])
+
+  Software   Software[]
+  JobContact JobContact[]
+
+  @@index([companyId])
+  @@index([isDone])
+  @@index([isDelete])
+}
+
+/////////////////////////////       Model Chat       /////////////////////////////
+model Chat {
+  id           Int        @id @default(autoincrement())
+  isDelete     Boolean    @default(false)
+  expertId     String     @db.Uuid // ایدی متخصص
+  expert       Expert     @relation(fields: [expertId], references: [id])
+  companyId    String     @db.Uuid // ایدی شرکت
+  company      Company    @relation(fields: [companyId], references: [id])
+  jobContactId Int        @unique // ایدی پروژه
+  jobContact   JobContact @relation(fields: [jobContactId], references: [id])
+  messages     Message[] // پیام‌های این چت
+  createdAt    DateTime   @default(now())
+
+  @@index([expertId])
+  @@index([jobContactId])
+  @@index([companyId])
+}
+
+/////////////////////////////       Model Message       /////////////////////////////
+model Message {
+  id         Int        @id @default(autoincrement())
+  isDelete   Boolean    @default(false)
+  content    String // متن پیام
+  senderId   String     @db.Uuid // شناسه ارسال‌کننده
+  senderType SenderType // نوع ارسال‌کننده (EXPERT یا COMPANY)
+  chatId     Int // شناسه چت
+  chat       Chat       @relation(fields: [chatId], references: [id])
+  createdAt  DateTime   @default(now())
+
+  @@index([chatId])
+}
+
+enum SenderType {
+  EXPERT
+  COMPANY
+}
+
+/////////////////////////////       Model SCore       /////////////////////////////
+model Score {
+  id           Int       @id @default(autoincrement())
+  score        Float // امتیازی که داده شده
+  msg          String? // سایر توضیحات
+  context      Json? // متن همراه با امتیازها
+  jobContactId Int
+  companyId    String    @db.Uuid // شناسه شرکت
+  expertId     String    @db.Uuid // شناسه متخصص
+  company      Company?  @relation(fields: [companyId], references: [id])
+  expert       Expert?   @relation(fields: [expertId], references: [id])
+  scoreType    RaterType // نوع امتیازگیرنده (EXPERT یا COMPANY)
+  createdAt    DateTime  @default(now()) // زمان ایجاد امتیاز
+
+  @@index([jobContactId])
+  @@index([scoreType])
+  @@index([companyId])
+  @@index([expertId])
+}
+
+enum RaterType {
+  Expert
+  Company
+}
+
+/////////////////////////////       Model DetailScore       /////////////////////////////
+model DetailScore {
+  id         Int   @id @default(autoincrement())
+  totalScore Int? // تعداد رای‌دهندگان
+  score      Float // امتیاز شخص
+  context    Json? // اطلاعات متن پیام‌ها همراه با امتیازها
+
+  ExpertId String? @unique @db.Uuid // شناسه متخصص
+  expert   Expert? @relation(fields: [ExpertId], references: [id])
+
+  companyId String?  @unique @db.Uuid // شناسه شرکت
+  company   Company? @relation(fields: [companyId], references: [id])
+
+  @@index([ExpertId])
+  @@index([companyId])
+}
+
+enum ScoreType {
+  Expert
+  Company
+}
+
+/////////////////////////////       Model JobContact       /////////////////////////////
+model JobContact {
+  id              Int        @id @default(autoincrement())
+  isDelete        Boolean    @default(false)
+  isDone          Boolean    @default(false) // وضعیت درخواست
+  approvedExpert  Boolean? // تایید متخصص
+  approvedCompany Boolean? // تایید شرکت
+  isScoreExpert   Boolean    @default(false)
+  isScoreCompany  Boolean    @default(false)
+  message         String? // توضیحات پیام
+  detailMessage   Json? // متن انتخاب شده
+  expertId        String     @db.Uuid // آیدی متخصص
+  expert          Expert     @relation(fields: [expertId], references: [id])
+  employmentId    Int // ایدی درخواست
+  employment      Employment @relation(fields: [employmentId], references: [id])
+  companyId       String?    @db.Uuid // آیدی شرکت
+  company         Company?   @relation(fields: [companyId], references: [id])
+  createdAt       DateTime   @default(now()) // زمان ایجاد
+  updatedAt       DateTime   @updatedAt
+  Payment         Payment?
+  Chat            Chat?
+
+  @@index([expertId])
+  @@index([employmentId])
+  @@index([companyId])
+  @@index([approvedCompany])
+  @@index([approvedExpert])
+}
+
+/////////////////////////////       Model Payment       /////////////////////////////
+model Payment {
+  id             Int        @id @default(autoincrement())
+  paymentExpert  Boolean // تایید متخصص
+  paymentCompany Boolean // تایید شرکت
+  detail         Json // متن انتخاب شده
+  expertId       String     @db.Uuid // آیدی متخصص
+  expert         Expert     @relation(fields: [expertId], references: [id])
+  companyId      String     @db.Uuid
+  company        Company    @relation(fields: [companyId], references: [id])
+  JobContactId   Int        @unique
+  jobContact     JobContact @relation(fields: [JobContactId], references: [id])
+  createdAt      DateTime   @default(now()) // زمان ایجاد
+  updatedAt      DateTime   @updatedAt
+
+  @@index([expertId])
+  @@index([companyId])
+  @@index([JobContactId])
+}
+
+/////////////////////////////       Relation User & Expertise        /////////////////////////////
+
+// model Example {
+//   id          Int      @id @default(autoincrement()) // شناسه اصلی
+//   id          String   @id @default(uuid())
+//   name        String // رشته
+//   age         Int? // عدد صحیح (nullable)
+//   balance     Float // عدد اعشاری
+//   isActive    Boolean // مقدار بولین
+//   createdAt   DateTime @default(now()) // تاریخ و زمان با مقدار پیش‌فرض
+//   metadata    Json // نوع JSON برای ذخیره داده‌های پویا
+//   tags        String[] // آرایه‌ای از رشته‌ها
+//   ratings     Float[] // آرایه‌ای از اعداد اعشاری
+//   preferences Json? // نوع JSON که می‌تواند null باشد
+//   enumType    Status // استفاده از نوع Enum
+// }
+
+// enum Status {
+//   ACTIVE
+//   INACTIVE
+//   PENDING
+// }
+/////////////////// One-to-Many
+// model User {
+//   id        String   @id @default(uuid()) @db.Uuid
+//   name      String
+//   email     String   @unique
+//   posts     Post[]   // رابطه یک به چند
+// }
+
+// model Post {
+//   id        String   @id @default(uuid()) @db.Uuid
+//   title     String
+//   content   String
+//   userId    String   // کلید خارجی به User
+//   user      User     @relation(fields: [userId], references: [id]) // رابطه با User
+// }
+
+///////////////// One-to-One
+// model User {
+//   id        String   @id @default(uuid()) @db.Uuid
+//   name      String
+//   email     String   @unique
+//   profile   Profile? // یک به یک رابطه با پروفایل
+// }
+
+// model Profile {
+//   id        String   @id @default(uuid()) @db.Uuid
+//   bio       String
+//   userId    String   @unique // کلید خارجی
+//   user      User     @relation(fields: [userId], references: [id]) // ارتباط با User
+// }
+
+///////////////// Many-to-Many
+// model User {
+//   id       String    @id @default(uuid()) @db.Uuid
+//   name     String
+//   courses  Course[]  @relation("UserCourses")
+// }
+
+// model Course {
+//   id       String    @id @default(uuid()) @db.Uuid
+//   title    String
+//   users    User[]    @relation("UserCourses")
+// }
+
+// model UserCourse {
+//   userId   String
+//   courseId String
+//   user     User      @relation(fields: [userId], references: [id])
+//   course   Course    @relation(fields: [courseId], references: [id])
+//   @@id([userId, courseId]) // تعریف کلید اصلی ترکیبی
+// }
