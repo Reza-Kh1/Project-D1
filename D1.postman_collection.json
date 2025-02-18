@@ -1,0 +1,995 @@
+{
+	"info": {
+		"_postman_id": "2d767ec7-fa86-4f5c-a1f1-ccd525589a57",
+		"name": "D1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27124581"
+	},
+	"item": [
+		{
+			"name": "Expert",
+			"item": [
+				{
+					"name": "Get ALL & Single Expert",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/expert?id=2ff8287b-cb99-4353-8548-60b63e4267cf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"expert"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "asc",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "2ff8287b-cb99-4353-8548-60b63e4267cf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Expert",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"reza\",\r\n    \"age\": \"120\",\r\n    \"phone\": \"09192990\", // unique\r\n    \"provite\": \"تهران\",\r\n    \"city\": \"تهران\",\r\n    \"gender\": \"MAN\", // MAN | WOMAN\r\n    \"jobStatus\": true, // Boolean\r\n    \"jobTitle\": \"برنامه نویس\",\r\n    \"jobTime\": \"9871\",\r\n    \"jobLocation\": \"تهران -بهاران\",\r\n    // \"image\": \"\",\r\n    \"password\": \"123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/expert/c480aefa-13f8-4a80-a30b-0e146795a34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"expert",
+								"c480aefa-13f8-4a80-a30b-0e146795a34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Expert",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/expert/c480aefa-13f8-4a80-a30b-0e146795a34d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"expert",
+								"c480aefa-13f8-4a80-a30b-0e146795a34d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignUp Expert",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123\",\r\n    \"phone\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/auth/expert",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"auth",
+								"expert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Expert",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123\",\r\n    \"phone\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/auth/expert",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"auth",
+								"expert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/expert/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"expert",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Score",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/score?companyId=cf15f524-decc-4d7b-b11c-2900b5135ff8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"score"
+							],
+							"query": [
+								{
+									"key": "companyId",
+									"value": "cf15f524-decc-4d7b-b11c-2900b5135ff8"
+								},
+								{
+									"key": "expertId",
+									"value": "7c685e7a-3a8c-4763-930a-ceaf9c38c025",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Score",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"score\": 2, // number\r\n    \"msg\": \"\", // string\r\n    \"context\": [], // {name:string,type:boolean}[]\r\n    \"jobContactId\": 1, // ایدی پروژه\r\n    \"companyId\": \"\", // ایدی شرکت\r\n    \"expertId\": \"\", // ایدی متخصص\r\n    \"scoreType\": \"Company\" // Company | Expert\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/score",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"score"
+							],
+							"query": [
+								{
+									"key": "expertId",
+									"value": "2ff8287b-cb99-4353-8548-60b63e4267cf",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Update Company",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"مپنا\",\r\n    \"password\": \"123\",\r\n    \"companyId\": \"123\",\r\n    \"phone\": \"01222087279\",\r\n    \"userCompany\": \"علی\",\r\n    \"phoneUser\": \"0919\",\r\n    \"userRole\": \"مدیر\",\r\n    \"companyField\": \"صنایع کارخانه\",\r\n    \"employeeCount\": 21,\r\n    \"address\": \"تهران-تهران\",\r\n    \"lvl\": \"بزرگ\",\r\n    \"year\": \"1380\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/company/c480aefa-13f8-4a80-a30b-0e146795a34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"company",
+								"c480aefa-13f8-4a80-a30b-0e146795a34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Company",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/company?page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"company"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Company",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/company/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"company",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SIgnUp Compnay",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123\",\r\n    \"phone\": \"123\",\r\n    \"companyId\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/auth/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"auth",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Company",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123\",\r\n    \"companyId\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/auth/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"auth",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/company/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"company",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employment",
+			"item": [
+				{
+					"name": "Create Employment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"age\": \"40 الی 50 \",\r\n    \"companyId\": \"9fe19013-f647-4aaf-93e7-964324a69356\",\r\n    \"desc\": \"توضیحات\",\r\n    \"descRemote\": \"\", // string || JSOn\r\n    \"gender\": \"MAN\",\r\n    \"lvl\": \"متوسط\",\r\n    \"nameExpertise\": \"هوانوردی\",\r\n    \"price\": \"حقوق ثابت ماهانه\",\r\n    \"remote\": true,\r\n    \"software\": [\r\n        {\r\n            \"name\": \"\",\r\n            \"lvl\": \"\"\r\n        }\r\n    ],\r\n    \"startProject\": \"2029-01-01T08:16:03.000Z\",\r\n    \"takeTask\": true,\r\n    \"teamWork\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/employment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"employment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"age\": \"40 الی 50 \",\r\n    \"companyId\": \"9fe19013-f647-4aaf-93e7-964324a69356\",\r\n    \"desc\": \"توضیحات\",\r\n    \"descRemote\": \"\", // string || JSOn\r\n    \"gender\": \"WOMAN\",\r\n    \"lvl\": \"متوسط\",\r\n    \"nameExpertise\": \"هوانوردی\",\r\n    \"price\": \"حقوق ثابت ماهانه\",\r\n    \"remote\": true,\r\n    \"software\": [\r\n        {\r\n            \"name\": \"\",\r\n            \"lvl\": \"\"\r\n        }\r\n    ],\r\n    \"startProject\": \"2029-01-01T08:16:03.000Z\",\r\n    \"takeTask\": true,\r\n    \"teamWork\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/employment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"employment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/employment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"employment"
+							],
+							"query": [
+								{
+									"key": "companyId",
+									"value": "id",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "idEmployment",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/employment/9fe19013-f647-4aaf-93e7-964324a69356",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"employment",
+								"9fe19013-f647-4aaf-93e7-964324a69356"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Contact",
+			"item": [
+				{
+					"name": "Create Job Contact",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"approvedExpert\": false, // Boolean\r\n    \"approvedCompany\": false, // Boolean\r\n    \"message\": null, // String // توضیحات پیام\r\n    \"detailMessage\": null, //  Json // متن انتخاب شده\r\n    \"expertId\": \"7c685e7a-3a8c-4763-930a-ceaf9c38c025\",\r\n    \"employmentId\": 2,\r\n    \"companyId\": \"cf15f524-decc-4d7b-b11c-2900b5135ff8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/jobContact",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"jobContact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Job Contact",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"approvedExpert\": true // Boolean\r\n    // \"approvedCompany\": false, // Boolean\r\n    // \"message\": null, // String // توضیحات پیام\r\n    // \"detailMessage\": null, //  Json // متن انتخاب شده\r\n    // \"expertId\": \"qwqdwqwd\",\r\n    // \"employmentId\": 2,\r\n    // \"companyId\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/jobContact/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"jobContact",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job Contact",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/jobContact?companyId=437d04ac-656c-426e-8f58-eefe82accc55",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"jobContact"
+							],
+							"query": [
+								{
+									"key": "expertId",
+									"value": "2ff8287b-cb99-4353-8548-60b63e4267cf",
+									"disabled": true
+								},
+								{
+									"key": "companyId",
+									"value": "437d04ac-656c-426e-8f58-eefe82accc55"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Get Chat",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/chat?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"chat"
+							],
+							"query": [
+								{
+									"key": "companyId",
+									"value": "437d04ac-656c-426e-8f58-eefe82accc55",
+									"disabled": true
+								},
+								{
+									"key": "approved",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "expertId",
+									"value": "2ff8287b-cb99-4353-8548-60b63e4267cf",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Chat",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"expertId\": \"id\",\r\n    \"companyId\": \"id\",\r\n    \"jobContactId\": \"id\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/chat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Chat",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/chat/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"chat",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "Create Message",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"اولین تست \", // string\r\n    \"senderId\": \"437d04ac-656c-426e-8f58-eefe82accc55\", // شناسه ارسال‌کننده\r\n    \"senderType\": \"COMPANY\", // نوع ارسال‌کننده (EXPERT یا COMPANY)\r\n    \"chatId\": 1 // number\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Message",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"isDelete\":false | true\r\n    \"content\": \"\", // string\r\n    \"senderId\": \"asdqwqwdq\", // شناسه ارسال‌کننده\r\n    \"senderType\": \"COMPANY\", // نوع ارسال‌کننده (EXPERT یا COMPANY)\r\n    \"chatId\": 1 // number\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/message/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"message",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Message",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/message/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"message",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Upload",
+			"item": [
+				{
+					"name": "Upload File",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Reza/Downloads/bigLogo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Upload",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api-v1/upload?key=1737962137946-bigLogo.png",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "1737962137946-bigLogo.png"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Verify",
+			"item": [
+				{
+					"name": "Verify Sms",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"company\", // company || \"expert\"\r\n    \"pass\": \"12098\" // sms code\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api-v1/auth/verify/asdadjoqiwdqw;d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api-v1",
+								"auth",
+								"verify",
+								"asdadjoqiwdqw;d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
